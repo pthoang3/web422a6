@@ -1,0 +1,13 @@
+{
+  "name": "web422a6",
+  "version": "1.0.0",
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.",
+  "main": "karma.conf.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hoang Phuong Thuy",
+  "license": "ISC"
+}

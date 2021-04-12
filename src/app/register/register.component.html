@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content>
+        <form #f='ngForm' (ngSubmit)='onSubmit(f)'>
+            <h2>Register</h2>
+            <mat-error *ngIf="warning"> {{warning}}</mat-error><br />
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="User Name" [class.is-invalid]="!name.valid" id="name" name="username" [(ngModel)]="registerUser.userName" required autofocus #name="ngModel"> 
+                <mat-error *ngIf="name.errors?.required">Please provide a valid user name</mat-error>
+            </mat-form-field><br />
+            <mat-form-field class="full-width-input">
+                <input matInput type="password" [class.is-invalid]="!password.valid" placeholder="Password" id="password" name="password" [(ngModel)]="registerUser.password" required #password="ngModel"> 
+                <mat-error *ngIf="password.errors?.required">Please provide a valid password</mat-error>
+            </mat-form-field><br />
+            <mat-form-field class="full-width-input">
+                <input matInput type="password" ngValidateEqual="password" [class.is-invalid]="password2.invalid" placeholder="Password" id="password2" name="password2" [(ngModel)]="registerUser.password2" required #password2="ngModel"> 
+                <mat-error *ngIf="(password2.dirty || password2.touched) && password2.invalid">Please provide a valid password</mat-error>
+            </mat-form-field><br />
+            <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid || loading" >
+                <mat-icon>account_box</mat-icon>
+                <span>&nbsp;&nbsp;&nbsp;Register</span>
+            </button>
+        </form>
+    </mat-card-content>
+    <div *ngIf="loading">Processing Request<br /><br />
+    </div>
+    <div class="success" *ngIf="success">Registration Successful. Proceed to<br /><br /> 
+        <a mat-raised-button color="accent" routerLink='/login' routerLinkActive="active" >
+            <mat-icon>login</mat-icon>&nbsp;&nbsp;&nbsp;Login
+        </a> 
+    </div>
+</mat-card>
